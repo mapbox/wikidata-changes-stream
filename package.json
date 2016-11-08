@@ -1,0 +1,28 @@
+{
+  "name": "wikidata-changes-stream",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Represent wikidata changes API as a node stream",
+  "main": "index.js",
+  "engines": {
+    "node": "4.4.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mapbox/wikidata-changes-stream.git"
+  },
+  "keywords": [
+    "wikidata"
+  ],
+  "author": "Mapbox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mapbox/wikidata-changes-stream/issues"
+  },
+  "homepage": "https://github.com/mapbox/wikidata-changes-stream",
+  "dependencies": {
+    "requestretry": "^1.12.0",
+    "parallel-stream": "^1.1.2",
+    "wikidata-sdk": "^4.0.6"
+  }
+}
