@@ -81,7 +81,9 @@ function createEntityStream() {
             json: true
         }, function(err, res, body) {
             if (err) return callback(err);
-            callback(null, body);
+            if (body.error) return callback(new Error(body.error.info || body.error.code || 'Unknown error'));
+            if (!body.entities || !body.entities[change.title]) return callback(new Error('Could not load entity: ' + change.title));
+            callback(null, body.entities[change.title]);
         });
     }, { objectMode: true, concurrency: 4 });
     return stream;
@@ -103,21 +105,9 @@ function getPage(rcstart, rcend, rccontinue, callback) {
         json: true
     }, function(err, res, body) {
         if (err) return callback(err);
+        if (res.statusCode !== 200) return callback(new Error('Got HTTP ' + res.statusCode));
+        if (body.error) return callback(new Error(body.error.info || body.error.code || 'Unknown error'));
         return callback(null, body);
     });
 }
-
-var changes = createChangeStream({
-    start: 1478646620,
-    end: 1478646680
-});
-changes
-.pipe(createEntityStream())
-.on('data', function(obj) {
-    console.log(JSON.stringify(obj));
-})
-.on('error', function(err) {
-    console.error(err);
-});
-
 
