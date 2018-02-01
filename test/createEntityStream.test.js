@@ -14,6 +14,6 @@ tape('createEntityStream', function(assert) {
     stream.write({ title: 'Q24642206' });
     stream.write({ title: 'Q27669897' });
     stream.write({ title: 'Q27530872' });
-    stream.write(null);
+    stream.end();
 });
 

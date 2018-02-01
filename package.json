@@ -1,8 +1,11 @@
 {
-  "name": "wikidata-changes-stream",
+  "name": "@mapbox/wikidata-changes-stream",
   "version": "0.0.1",
   "description": "Represent wikidata changes API as a node stream",
   "main": "index.js",
+  "engines": {
+    "node": ">= 6.4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mapbox/wikidata-changes-stream.git"
